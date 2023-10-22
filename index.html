@@ -18,7 +18,7 @@
             </h1>
         </div>
 
-    <form action="#" class="form" method="post">
+    <form id="form">
         <label for="type_of_certificate">Тип справки:</label>
         <select id="type_of_certificate" name="type" required>
             <option value="default">По месту требования</option>
@@ -52,12 +52,52 @@
                 <option value="Внебюджет">Внебюджет</option>
             </select><br><br>
         </div>
-        <div id="btn">
-            <input type="submit" value="Отправить">
+        <div id="military_town">
+            <label for="military_office_town">Город военкомата:</label>
+            <input type="text" id="military_office_town" name="military_office_town"><br><br>
         </div>
+        <button id="declare">Оформить справку</button>
     </form>
     </div>
     <script>
+        let tg = window.Telgram.WebApp;
+
+        tg.expand()
+
+        const selectElement = document.getElementById('type_of_certificate');
+        const militaryTownElement = document.getElementById('military_town');
+        let type = selectElement.value;
+        let surname = document.getElementById("surname").value;
+        let name = document.getElementById("name").value;
+        let middle_name = document.getElementById("middle_name").value;
+        let dob = document.getElementById("dob").value;
+        let course = document.getElementById("course").value;
+        let form = document.getElementById("form").value;
+        let military_town = document.getElementById("military_office_town").value;
+        const declareButton = document.getElementById('declare');
+
+        selectElement.addEventListener('change', function() {
+            if (selectElement.value === 'military') {
+                militaryTownElement.style.display = "block";
+            } else {
+                militaryTownElement.style.display = "none";
+            }
+        });
+
+        declareButton.addEventListener('click', function () {
+                    let user_data = {
+                        type: type,
+                        surname: surname,
+                        name: name,
+                        middle_name: middle_name,
+                        birthday_date: dob,
+                        course: course,
+                        form: form,
+                        military_town: military_town
+                    }
+                    alert(JSON.stringify(user_data))
+                    tg.sendData(JSON.stringify(user_data))
+                })
     </script>
 </body>
 </html>

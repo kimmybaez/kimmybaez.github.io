@@ -17,3 +17,11 @@
         align-items: center;
         flex-direction: column;
     }
+
+    #form {
+        margin-top: 50px;
+    }
+
+    #military_town {
+        display: none;
+    }
