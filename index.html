@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="src/styles/styles.css" rel="stylesheet" type="text/css">
+    <title>Оформить справку</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+
+            </div>
+            <h1 class="logo_text">
+                Оформить справку
+            </h1>
+        </div>
+
+    <form action="#" class="form" method="post">
+        <label for="type_of_certificate">Тип справки:</label>
+        <select id="type_of_certificate" name="type" required>
+            <option value="default">По месту требования</option>
+            <option value="military">Для военкомата</option>
+        </select><br><br>
+        <div id="type_selected">
+            <label for="surname">Фамилия:</label>
+            <input type="text" id="surname" name="surname" required><br><br>
+
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="middle_name">Отчество:</label>
+            <input type="text" id="middle_name" name="middle_name" required><br><br>
+
+            <label for="dob">Дата рождения:</label>
+            <input type="date" id="dob" name="birthday_date" required><br><br>
+        </div>
+        <div id="second_stage">
+            <label for="course">Курс:</label>
+            <select id="course" name="course" required>
+                <option value="1 курса">1 курс</option>
+                <option value="2 курса">2 курс</option>
+                <option value="3 курса">3 курс</option>
+                <option value="4 курса">4 курс</option>
+            </select><br><br>
+
+            <label for="form">Форма обучения:</label>
+            <select id="form" name="form" required>
+                <option value="Бюджет">Бюджет</option>
+                <option value="Внебюджет">Внебюджет</option>
+            </select><br><br>
+        </div>
+        <div id="btn">
+            <input type="submit" value="Отправить">
+        </div>
+    </form>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</body>
+</html>
