@@ -75,7 +75,8 @@
     </form>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js">
-        document.getElementById('header').setAttribute("style","width:${tg.viewportHeight}");
+        tg.expand()
+        document.getElementById('header').setAttribute("style","width:1000px");
     </script>
 </body>
 </html>
