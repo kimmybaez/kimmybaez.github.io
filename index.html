@@ -123,9 +123,9 @@ body {
                         form: form,
                         military_town: military_town
                     }
-                    alert(JSON.stringify(user_data))
-                    tg.sendData(JSON.stringify(user_data))
+                    tg.sendData(JSON.stringify(user_data));
                 })
+        tg.close();
     </script>
 </body>
 </html>
