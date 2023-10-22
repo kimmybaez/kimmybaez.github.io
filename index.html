@@ -17,12 +17,16 @@
     body {
         font-family: 'Montserrat', sans-serif;
         color: var(--tg-theme-text-color);
-        background: red;
+        background: var(--tg-theme-bg-color);
+    }
+
+    #header {
+        margin: 0 auto;
     }
 </style>
 <body>
     <div class="wrapper">
-        <div class="header">
+        <div id="header">
             <div class="logo">
 
             </div>
@@ -70,6 +74,8 @@
         </div>
     </form>
     </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js">
+        document.getElementById('header').setAttribute("style","width:${tg.viewportHeight}");
+    </script>
 </body>
 </html>
