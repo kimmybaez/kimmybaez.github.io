@@ -84,12 +84,14 @@ body {
             <label for="military_office_town">Город военкомата:</label>
             <input type="text" id="military_office_town" name="military_office_town"><br><br>
         </div>
-        <button id="declare">Оформить справку</button>
     </form>
     </div>
     <script>
         let tg = window.Telgram.WebApp;
 
+        tg.MainButton.text = "Отправить на оформление";
+        tg.MainButton.color = "#169CD8";
+        tg.MainButton.show();
         tg.expand()
 
         const selectElement = document.getElementById('type_of_certificate');
@@ -102,7 +104,6 @@ body {
         let course = document.getElementById("course").value;
         let form = document.getElementById("form").value;
         let military_town = document.getElementById("military_office_town").value;
-        const declareButton = document.getElementById('declare');
 
         selectElement.addEventListener('change', function() {
             if (selectElement.value === 'military') {
@@ -111,21 +112,20 @@ body {
                 militaryTownElement.style.display = "none";
             }
         });
-
-        declareButton.addEventListener('click', () => {
-                    let user_data = {
-                        type: type,
-                        surname: surname,
-                        name: name,
-                        middle_name: middle_name,
-                        birthday_date: dob,
-                        course: course,
-                        form: form,
-                        military_town: military_town
-                    }
-                    tg.sendData(JSON.stringify(user_data));
-                    tg.close();
-                })
+        Telegram.WebApp.onEvent('mainButtonClicked', function(){
+            let user_data = {
+                    type: type,
+                    surname: surname,
+                    name: name,
+                    middle_name: middle_name,
+                    birthday_date: dob,
+                    course: course,
+                    form: form,
+                    military_town: military_town
+                }
+            tg.sendData(JSON.stringify(user_data));
+            tg.close();
+        });
     </script>
 </body>
 </html>
