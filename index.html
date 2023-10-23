@@ -106,8 +106,9 @@ body {
         let military_town = document.getElementById("military_office_town").value;
 
         selectElement.addEventListener('change', function() {
+            console.log(typeof(tg));
+            typeof(tg)
             if (selectElement.value === 'military') {
-                console.log(typeof(tg));
                 militaryTownElement.style.display = "block";
             } else {
                 militaryTownElement.style.display = "none";
