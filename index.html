@@ -88,7 +88,6 @@ body {
     </div>
     <script>
         let tg = window.Telgram.WebApp;
-        alert(typeof(tg))
 
         tg.MainButton.text = "Отправить на оформление";
         tg.MainButton.color = "#169CD8";
@@ -108,6 +107,7 @@ body {
 
         selectElement.addEventListener('change', function() {
             if (selectElement.value === 'military') {
+                console.log('hello, world!');
                 militaryTownElement.style.display = "block";
             } else {
                 militaryTownElement.style.display = "none";
