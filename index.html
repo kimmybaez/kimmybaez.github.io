@@ -86,7 +86,7 @@ body {
         </div>
     </form>
     </div>
-    <script>
+    <script src="https://telegram.org/js/telegram-web-app.js">
         let tg = window.Telgram.WebApp;
 
         tg.MainButton.text = "Отправить на оформление";
@@ -106,8 +106,6 @@ body {
         let military_town = document.getElementById("military_office_town").value;
 
         selectElement.addEventListener('change', function() {
-            console.log(typeof(tg));
-            typeof(tg)
             if (selectElement.value === 'military') {
                 militaryTownElement.style.display = "block";
             } else {
