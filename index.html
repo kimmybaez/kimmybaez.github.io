@@ -78,6 +78,9 @@
         </div>
 
     </form>
+    <div id="error">
+        
+    </div>
 </body>
 <script type="text/javascript">
     let tg = window.Telegram.WebApp;
@@ -89,8 +92,14 @@
     tg.MainButton.show();
 
 
-    const selectElement = document.getElementById('certificate_type');
-    const militaryInfoElement = document.getElementById('military_info');
+    let selectElement = document.getElementById('certificate_type');
+    let militaryInfoElement = document.getElementById('military_info');
+    let nameElementValue = document.getElementById('name').value;
+    let surnameElementValue = document.getElementById('surname').value;
+    let middleNameElementValue = document.getElementById('middle_name').value;
+    let birthdayDateElementValue = document.getElementById('birthday_date').value;
+
+    let errorElement = document.getElementById('error');
 
     selectElement.addEventListener('change', function () {
         if (selectElement.value === 'military') {
@@ -101,8 +110,11 @@
     });
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData("some string that we need to send"); 
-    //при клике на основную кнопку отправляем данные в строковом виде
+        if (nameElementValue == 0 || surnameElementValue == 0 || middleNameElementValue == 0) {
+        errorElement.innerText = "Вы допустили ошибку";
+        } else {
+            tg.sendData("some string that we need to send"); 
+        }
     });
 </script>
 </html>
