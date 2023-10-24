@@ -107,14 +107,13 @@
 
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
+
+        let surname = document.getElementById('surname').value;
+        let name = document.getElementById('name').value;
         let user_data = {
-                surname: document.getElementById('surname').value,
-                name: document.getElementById('name').value,
-                middle_name: document.getElementById('middle_name').value,
-                birthday_date: document.getElementById('birthday_date').value,
-                course: document.getElementById('course').value,
-                form: document.getElementById('form').value,
-            }
+                surname: surname,
+                name: name
+        }
             tg.sendData(JSON.stringify(user_data));
             tg.close();
     });
