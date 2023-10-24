@@ -9,94 +9,105 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-* {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
-}
+    * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+    }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--tg-theme-text-color);
-}
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--tg-theme-bg-color);
+        color: var(--tg-theme-text-color);
+    }
 
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+    #wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
-#form {
-    margin-top: 50px;
-}
+    #header {
+        width: 100%;
+        height: 30px;
+        margin: auto auto 10px auto;
+    }
 
-#military_town {
-    display: none;
-}
+    #military_town {
+        display: none;
+    }
 </style>
 <body>
-    <div class="wrapper">
+    <div id="wrapper">
         <div id="header">
-            <div class="logo">
+            <div id="logo">
 
             </div>
-            <h1 class="logo_text">
+            <h1 id="logo_text">
                 Оформить справку
             </h1>
         </div>
 
-    <form id="form">
-        <label for="type_of_certificate">Тип справки:</label>
-        <select id="type_of_certificate" name="type" required>
-            <option value="default">По месту требования</option>
-            <option value="military">Для военкомата</option>
-        </select><br><br>
-        <div id="type_selected">
-            <label for="surname">Фамилия:</label>
-            <input type="text" id="surname" name="surname" required><br><br>
+        <form id="form">
 
-            <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="middle_name">Отчество:</label>
-            <input type="text" id="middle_name" name="middle_name" required><br><br>
-
-            <label for="dob">Дата рождения:</label>
-            <input type="date" id="dob" name="birthday_date" required><br><br>
-        </div>
-        <div id="second_stage">
-            <label for="course">Курс:</label>
-            <select id="course" name="course" required>
-                <option value="1 курса">1 курс</option>
-                <option value="2 курса">2 курс</option>
-                <option value="3 курса">3 курс</option>
-                <option value="4 курса">4 курс</option>
+            <label for="type_of_certificate">Тип справки:</label>
+            <select id="type_of_certificate" name="type" required>
+                <option value="default">По месту требования</option>
+                <option value="military">Для военкомата</option>
             </select><br><br>
 
-            <label for="form_of_education">Форма обучения:</label>
-            <select id="form_of_education" name="form" required>
-                <option value="Бюджет">Бюджет</option>
-                <option value="Внебюджет">Внебюджет</option>
-            </select><br><br>
-        </div>
-        <div id="military_town">
-            <label for="military_office_town">Город военкомата:</label>
-            <input type="text" id="military_office_town" name="military_office_town"><br><br>
-        </div>
-    </form>
+            <div id="main_info">
+                <label for="surname">Фамилия:</label>
+                <input type="text" id="surname" name="surname" required><br><br>
+
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="middle_name">Отчество:</label>
+                <input type="text" id="middle_name" name="middle_name" required><br><br>
+
+                <label for="dob">Дата рождения:</label>
+                <input type="date" id="dob" name="birthday_date" required><br><br>
+            </div>
+
+            <div id="colege_info">
+                <label for="course">Курс:</label>
+                <select id="course" name="course" required>
+                    <option value="1 курса">1 курс</option>
+                    <option value="2 курса">2 курс</option>
+                    <option value="3 курса">3 курс</option>
+                    <option value="4 курса">4 курс</option>
+                </select><br><br>
+
+                <label for="form">Форма обучения:</label>
+                <select id="form" name="form" required>
+                    <option value="Бюджет">Бюджет</option>
+                    <option value="Внебюджет">Внебюджет</option>
+                </select><br><br>
+            </div>
+
+            <div id="military_town">
+                <label for="military_office_town">Город военкомата:</label>
+                <input type="text" id="military_office_town" name="military_office_town"><br><br>
+            </div>
+        </form>
     </div>
     <script>
-        let tg = window.Telegram.WebApp;
+        let tg = window.Telgram.WebApp;
 
-        tg.MainButton.text = "Отправить на оформление";
+        tg.MainButton.text = "Оформить";
         tg.MainButton.color = "#169CD8";
         tg.MainButton.show();
+
         tg.expand()
 
-        const selectElement = document.getElementById('type_of_certificate');
-        const militaryTownElement = document.getElementById('military_town');
-        let type = selectElement.value;
+
+
+
+        let typeOfCertificateElement = document.getElementById('type_of_certificate');
+        let militaryTownElement = document.getElementById('military_town');
+        let type = typeOfCertificateElement.value;
         let surname = document.getElementById("surname").value;
         let name = document.getElementById("name").value;
         let middle_name = document.getElementById("middle_name").value;
@@ -105,15 +116,24 @@ body {
         let form = document.getElementById("form").value;
         let military_town = document.getElementById("military_office_town").value;
 
-        selectElement.addEventListener('change', function() {
-            if (selectElement.value === 'military') {
+
+
+
+        typeOfCertificateElement.addEventListener('change', function() {
+            if (typeOfCertificateElement.value === 'military') {
                 militaryTownElement.style.display = "block";
             } else {
                 militaryTownElement.style.display = "none";
             }
         });
+
+
+
         Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            let user_data = {
+            let user_data = {}
+
+            if (type === 'military') {
+                user_data = {
                     type: type,
                     surname: surname,
                     name: name,
@@ -123,6 +143,8 @@ body {
                     form: form,
                     military_town: military_town
                 }
+            } else {
+            }
             tg.sendData(JSON.stringify(user_data));
             tg.close();
         });
