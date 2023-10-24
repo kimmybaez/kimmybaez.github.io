@@ -112,17 +112,13 @@
         }
     });
 
-    if (nameElementValue === 0 || surnameElementValue === 0 || middleNameElementValue === 0) {
-            errorElement.innerText = "Вы допустили ошибку";
-    }
+    document.getElementById('form').addEventListener('change' function () {
+        if (nameElementValue === 0 || surnameElementValue === 0 || middleNameElementValue === 0) {
+            errorElement.innerText = "Вы допустили ошибку в имени фамилии или отчестве";
+        }
+    });
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-
-        if (nameElementValue === 0 || surnameElementValue === 0 || middleNameElementValue === 0) {
-            errorElement.innerText = "Вы допустили ошибку";
-        }
-        
-        if (selectElement.value === 'default') {
             let user_data = {
                 surname = surnameElementValue,
                 name = nameElementValue,
@@ -133,7 +129,6 @@
             }
             tg.sendData(JSON.stringify(user_data));
             tg.close();
-        }
     });
 </script>
 </html>
