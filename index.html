@@ -74,8 +74,8 @@ body {
                 <option value="4 курса">4 курс</option>
             </select><br><br>
 
-            <label for="form">Форма обучения:</label>
-            <select id="form" name="form" required>
+            <label for="form_of_education">Форма обучения:</label>
+            <select id="form_of_education" name="form" required>
                 <option value="Бюджет">Бюджет</option>
                 <option value="Внебюджет">Внебюджет</option>
             </select><br><br>
@@ -86,8 +86,8 @@ body {
         </div>
     </form>
     </div>
-    <script src="https://telegram.org/js/telegram-web-app.js">
-        let tg = window.Telgram.WebApp;
+    <script>
+        let tg = window.Telegram.WebApp;
 
         tg.MainButton.text = "Отправить на оформление";
         tg.MainButton.color = "#169CD8";
