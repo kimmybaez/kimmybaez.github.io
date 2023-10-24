@@ -112,27 +112,16 @@
         }
     });
 
+    if (nameElementValue === 0 || surnameElementValue === 0 || middleNameElementValue === 0) {
+            errorElement.innerText = "Вы допустили ошибку";
+    }
+
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-        if (nameElementValue == 0 || surnameElementValue == 0 || middleNameElementValue == 0) {
+
+        if (nameElementValue === 0 || surnameElementValue === 0 || middleNameElementValue === 0) {
             errorElement.innerText = "Вы допустили ошибку";
         }
-
-        if (selectElement.value === 'military' && document.getElementById('military_office_town').value != 0) {
-            let user_data = {
-                surname = surnameElementValue,
-                name = nameElementValue,
-                middle_name = middleNameElementValue,
-                birthday_date = birthdayDateElementValue,
-                course = courseElementValue,
-                form = formElementValue,
-                military_office = document.getElementById('military_office_town').value
-            }
-            tg.sendData(JSON.stringify(user_data));
-            tg.close();
-        } else if (selectElement.value === 'military' && document.getElementById('military_office_town').value == 0) {
-            errorElement.innerText = "Вы допустили ошибку";
-        }
-
+        
         if (selectElement.value === 'default') {
             let user_data = {
                 surname = surnameElementValue,
