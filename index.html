@@ -106,9 +106,9 @@
     });
 
     let user_data = {
-                surname = document.getElementById('surname').value,
-                name = document.getElementById('name').value,
-                middle_name = document.getElementById('middle_name').value,
+                surname = document.getElementById('surname').value.trim(),
+                name = document.getElementById('name').value.trim(),
+                middle_name = document.getElementById('middle_name').value.trim(),
                 birthday_date = document.getElementById('birthday_date').value,
                 course = document.getElementById('course').value,
                 form = document.getElementById('form').value,
