@@ -119,7 +119,7 @@
 
         let military_office = document.getElementById('military_office_town').value;
 
-        if ((surnameElementValue.length != 0 && nameElementValue.length != 0 && middle_nameElementValue.length != 0) && selectElement === 'military') {
+        if ((surnameElementValue.length != 0 && nameElementValue.length != 0 && middle_nameElementValue.length != 0) && selectElementValue === 'military') {
                 let user_data = {
                     surname: surname,
                     name: name,
@@ -131,7 +131,7 @@
                 }
                 tg.sendData(JSON.stringify(user_data));
                 tg.close();
-        } else if ((surnameElementValue.length != 0 && nameElementValue.length != 0 && middle_nameElementValue.length != 0) && selectElement === 'default') {
+        } else if ((surnameElementValue.length != 0 && nameElementValue.length != 0 && middle_nameElementValue.length != 0) && selectElementValue === 'default') {
             let user_data = {
                 surname: surname,
                 name: name,
@@ -143,9 +143,8 @@
             tg.sendData(JSON.stringify(user_data));
             tg.close();
         } else {
-            errorElement.innerText = "Вы допустили ошибку";
+            errorElement.innerText = "Вы допустили ошибку"
         }
-
     });
 </script>
 </html>
