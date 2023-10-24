@@ -126,9 +126,9 @@
                 course = courseElementValue,
                 form = formElementValue,
             }
-            
+
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            tg.sendData(JSON.stringify(user_data));
+            tg.sendData(user_data);
             tg.close();
     });
 </script>
