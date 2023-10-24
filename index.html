@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Оформление справки</title>
+    <style type="text/css">
+        #military_info {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="header">   
@@ -64,6 +69,17 @@
     tg.MainButton.text = "Оформить справку";
     tg.MainButton.color = "#169CD8";
     tg.MainButton.show();
+
+
+    let typeOfCertificate = document.getElementById('certificate_type');
+    let militaryInfoBlock = document.getElementById('military_info');
+    typeOfCertificate.addEventListener('change', function() {
+        if (typeOfCertificate.value === 'military') {
+            militaryInfoBlock.style.display == "block";
+        } else {
+            militaryInfoBlock.style.display == "none";
+        }
+    });
 
 </script>
 </html>
