@@ -71,15 +71,15 @@
     tg.MainButton.show();
 
 
-    let typeOfCertificate = document.getElementById('certificate_type');
-    let militaryInfoBlock = document.getElementById('military_info');
-    typeOfCertificate.addEventListener('change', function() {
-        if (typeOfCertificate.value === 'military') {
-            militaryInfoBlock.style.display == "block";
+    const selectElement = document.getElementById('certificate_type');
+    const militaryInfoElement = document.getElementById('military_info');
+
+    selectElement.addEventListener('change', function () {
+        if (selectElement.value === 'military') {
+            militaryInfoElement.style.display = 'block'; // Показать блок
         } else {
-            militaryInfoBlock.style.display == "none";
+            militaryInfoElement.style.display = 'none'; // Скрыть блок
         }
     });
-
 </script>
 </html>
