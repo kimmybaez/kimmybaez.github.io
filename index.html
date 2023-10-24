@@ -8,7 +8,53 @@
     <title>Оформление справки</title>
 </head>
 <body>
-    Simple text
+    <div id="header">   
+            <h1 id="header_text">Оформить справку</h1>
+    </div>
+    <form>
+
+        <label for="certificate_type">Тип справки:</label>
+        <select id="certificate_type" name="type" required>
+            <option value="default">По месту требования</option>
+            <option value="military">Для военкомата</option>
+        </select><br><br>
+
+        <div id="main_information">
+            <label for="surname">Фамилия:</label>
+            <input type="text" id="surname" name="surname" required><br><br>
+
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="middle_name">Отчество:</label>
+            <input type="text" id="middle_name" name="middle_name" placeholder="Если нет поставьте -" required><br><br>
+
+            <label for="birthday_date">Дата рождения:</label>
+            <input type="date" id="birthday_date" name="birthday_date" required><br><br>
+        </div>
+
+        <div id="college_information">
+            <label for="course">Курс:</label>
+            <select id="course" name="course" required>
+                <option value="1 курса">1 курс</option>
+                <option value="2 курса">2 курс</option>
+                <option value="3 курса">3 курс</option>
+                <option value="4 курса">4 курс</option>
+            </select><br><br>
+
+            <label for="form">Форма обучения:</label>
+            <select id="form" name="form" required>
+                <option value="Бюджет">Бюджет</option>
+                <option value="Внебюджет">Внебюджет</option>
+            </select><br><br>
+        </div>
+
+        <div id="military_info">
+            <label for="military_office_town">Город военкомата:</label>
+            <input type="text" id="military_office_town" name="military_office_town"><br><br>
+        </div>
+
+    </form>
 </body>
 <script type="text/javascript">
     let tg = window.Telegram.WebApp;
