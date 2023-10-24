@@ -99,6 +99,9 @@
     let middleNameElementValue = document.getElementById('middle_name').value;
     let birthdayDateElementValue = document.getElementById('birthday_date').value;
 
+    let courseElementValue = document.getElementById('course').value;
+    let formElementValue = document.getElementById('form').value;
+
     let errorElement = document.getElementById('error');
 
     selectElement.addEventListener('change', function () {
@@ -111,9 +114,36 @@
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
         if (nameElementValue == 0 || surnameElementValue == 0 || middleNameElementValue == 0) {
-        errorElement.innerText = "Вы допустили ошибку";
-        } else {
-            tg.sendData("some string that we need to send"); 
+            errorElement.innerText = "Вы допустили ошибку";
+        }
+
+        if (selectElement.value === 'military' && document.getElementById('military_office_town').value != 0) {
+            let user_data = {
+                surname = surnameElementValue,
+                name = nameElementValue,
+                middle_name = middleNameElementValue,
+                birthday_date = birthdayDateElementValue,
+                course = courseElementValue,
+                form = formElementValue,
+                military_office = document.getElementById('military_office_town').value
+            }
+            tg.sendData(JSON.stringify(user_data));
+            tg.close();
+        } else if (selectElement.value === 'military' && document.getElementById('military_office_town').value == 0) {
+            errorElement.innerText = "Вы допустили ошибку";
+        }
+
+        if (selectElement.value === 'default') {
+            let user_data = {
+                surname = surnameElementValue,
+                name = nameElementValue,
+                middle_name = middleNameElementValue,
+                birthday_date = birthdayDateElementValue,
+                course = courseElementValue,
+                form = formElementValue,
+            }
+            tg.sendData(JSON.stringify(user_data));
+            tg.close();
         }
     });
 </script>
