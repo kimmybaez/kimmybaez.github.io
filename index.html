@@ -110,9 +110,9 @@
 
         let selectElementValue = document.getElementById('certificate_type').value;
 
-        let surnameElementValue = document.getElementById('surname').value.trim();
-        let nameElementValue = document.getElementById('name').value.trim();
-        let middle_nameElementValue = document.getElementById('middle_name').value.trim();
+        let surnameElementValue = document.getElementById('surname').value;
+        let nameElementValue = document.getElementById('name').value;
+        let middle_nameElementValue = document.getElementById('middle_name').value;
         let birthday_dateElementValue = document.getElementById('birthday_date').value;
         let courseElementValue = document.getElementById('course').value;
         let formElementValue = document.getElementById('form').value;
@@ -121,8 +121,8 @@
 
         if (selectElementValue === 'military') {
                 let user_data = {
-                    surname: surname,
-                    name: name,
+                    surname: surnameElementValue,
+                    name: nameElementValue,
                     middle_name: middle_nameElementValue,
                     birthday_date: birthday_dateElementValue,
                     course: courseElementValue,
