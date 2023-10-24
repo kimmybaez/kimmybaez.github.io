@@ -92,15 +92,8 @@
     tg.MainButton.show();
 
 
-    let selectElement = document.getElementById('certificate_type');
-    let militaryInfoElement = document.getElementById('military_info');
-    let nameElementValue = document.getElementById('name').value;
-    let surnameElementValue = document.getElementById('surname').value;
-    let middleNameElementValue = document.getElementById('middle_name').value;
-    let birthdayDateElementValue = document.getElementById('birthday_date').value;
-
-    let courseElementValue = document.getElementById('course').value;
-    let formElementValue = document.getElementById('form').value;
+    const selectElement = document.getElementById('certificate_type');
+    const militaryInfoElement = document.getElementById('military_info');
 
     let errorElement = document.getElementById('error');
 
@@ -113,12 +106,12 @@
     });
 
     let user_data = {
-                surname = surnameElementValue,
-                name = nameElementValue,
-                middle_name = middleNameElementValue,
-                birthday_date = birthdayDateElementValue,
-                course = courseElementValue,
-                form = formElementValue,
+                surname = document.getElementById('surname').value,
+                name = document.getElementById('name').value,
+                middle_name = document.getElementById('middle_name').value,
+                birthday_date = document.getElementById('birthday_date').value,
+                course = document.getElementById('course').value,
+                form = document.getElementById('form').value,
             }
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
