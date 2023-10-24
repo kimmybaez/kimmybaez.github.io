@@ -144,6 +144,15 @@
                     military_town: military_town
                 }
             } else {
+                user_data = {
+                    type: type,
+                    surname: surname,
+                    name: name,
+                    middle_name: middle_name,
+                    birthday_date: dob,
+                    course: course,
+                    form: form
+                }
             }
             tg.sendData(JSON.stringify(user_data));
             tg.close();
