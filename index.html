@@ -104,6 +104,16 @@
             militaryInfoElement.style.display = 'none'; // Скрыть блок
         }
     });
+
+    let user_data = {
+                surname: document.getElementById('surname').value.trim(),
+                name: document.getElementById('name').value.trim(),
+                middle_name: document.getElementById('middle_name').value.trim(),
+                birthday_date: document.getElementById('birthday_date').value,
+                course: document.getElementById('course').value,
+                form: document.getElementById('form').value,
+            }
+
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
             tg.sendData(user_data);
             tg.close();
