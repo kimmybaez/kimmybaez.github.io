@@ -29,9 +29,7 @@
     }
 
     #header {
-        width: 100%;
-        height: 30px;
-        margin: auto auto 10px auto;
+        margin-bottom: 20px;
     }
 
     #military_town {
@@ -65,7 +63,7 @@
                 <input type="text" id="name" name="name" required><br><br>
 
                 <label for="middle_name">Отчество:</label>
-                <input type="text" id="middle_name" name="middle_name" required><br><br>
+                <input type="text" id="middle_name" name="middle_name" placeholder="Если отчества нет поставьте -" required><br><br>
 
                 <label for="dob">Дата рождения:</label>
                 <input type="date" id="dob" name="birthday_date" required><br><br>
@@ -92,6 +90,8 @@
                 <input type="text" id="military_office_town" name="military_office_town"><br><br>
             </div>
         </form>
+
+        <div id="error"></div>
     </div>
     <script>
         let tg = window.Telegram.WebApp;
@@ -115,6 +115,7 @@
         let course = document.getElementById("course").value;
         let form = document.getElementById("form").value;
         let military_town = document.getElementById("military_office_town").value;
+        let erorrElement = document.getElementById("error");
 
 
 
@@ -132,31 +133,38 @@
         Telegram.WebApp.onEvent('mainButtonClicked', function(){
             let user_data = {}
 
-            if (type === 'military') {
+            if (surname.length < 1 || name.length < 1 || middle_name < 1) {
+                erorrElement.innerText = 'Вы неправильно ввели некоторые данные пожалуйста перепроверьтесь';
+                return;
+            } else if (type === 'default') {
                 user_data = {
-                    type: type,
-                    surname: surname,
-                    name: name,
-                    middle_name: middle_name,
-                    birthday_date: dob,
-                    course: course,
-                    form: form,
-                    military_town: military_town
-                }
-            } else {
+                        type: type,
+                        surname: surname,
+                        name: name,
+                        middle_name: middle_name,
+                        birthday_date: dob,
+                        course: course,
+                        form: form
+                    }
+                    tg.sendData(JSON.stringify(user_data));
+                    tg.close();
+            } else if (type === 'military' && military_town.length > 1) {
                 user_data = {
-                    type: type,
-                    surname: surname,
-                    name: name,
-                    middle_name: middle_name,
-                    birthday_date: dob,
-                    course: course,
-                    form: form
-                }
+                        type: type,
+                        surname: surname,
+                        name: name,
+                        middle_name: middle_name,
+                        birthday_date: dob,
+                        course: course,
+                        form: form,
+                        military_town: military_town
+                    }
+                    tg.sendData(JSON.stringify(user_data));
+                    tg.close();
+            } else if (type === 'military' && military_town.length < 1) {
+                erorrElement.innerText = 'Вы неправильно ввели некоторые данные пожалуйста перепроверьтесь';
+                return;
             }
-            tg.sendData(JSON.stringify(user_data));
-            tg.close();
-        });
     </script>
 </body>
 </html>
