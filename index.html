@@ -95,6 +95,8 @@
     const selectElement = document.getElementById('certificate_type');
     const militaryInfoElement = document.getElementById('military_info');
 
+    const errorElement = document.getElementById('error');
+
     selectElement.addEventListener('change', function () {
         if (selectElement.value === 'military') {
             militaryInfoElement.style.display = 'block'; // Показать блок
@@ -102,9 +104,8 @@
             militaryInfoElement.style.display = 'none'; // Скрыть блок
         }
     });
-
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            tg.sendData("user_data");
+            tg.sendData(user_data);
             tg.close();
     });
 </script>
