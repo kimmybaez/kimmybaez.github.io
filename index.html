@@ -115,7 +115,7 @@
             }
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            tg.sendData(user_data);
+            tg.sendData(JSON.stringify(user_data));
             tg.close();
     });
 </script>
